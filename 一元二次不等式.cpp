@@ -1,0 +1,91 @@
+#include<iostream>
+#include<cmath>
+#include<cstdio>
+#include<iomanip>
+using namespace std;
+int main()
+{
+    cout<<"该版本只适用于不等符号为大于或小于的一元二次不等式，暂不支持大于等于和小于等于\n";
+    cout<<"请依次输入a,b,c,不等式符号（不等式右侧为0）\n";
+	double a,b,c,delta,r,x1,x2,y1,y2,j,num,da,xiao,s;
+    char l;
+	cin>>a>>b>>c>>l;
+    cout<<"该一元二次不等式的解集为:";
+	delta=b*b-4*a*c;
+	r=sqrt(delta);
+    s=-2*a/b;
+	if(delta>0)
+	{
+	x1=-1*b+r;
+	x2=-1*b-r;
+	j=2*a;
+	y1=x1/j;
+	y2=x2/j;
+    if(y1>y2)
+    {
+        da=y1;
+        xiao=y2;
+    }
+    if(y1<y2)
+    {
+        da=y2;
+        xiao=y1;
+    }
+    if(l=='>')
+    {
+        if(a>0)
+        {
+            cout<<"{x|x<"<<setprecision(5)<<fixed<<xiao<<"或x>"<<setprecision(5)<<fixed<<da<<"}";
+        }
+        if(a<0)
+        {
+            cout<<"{x|"<<setprecision(5)<<fixed<<xiao<<"<x<"<<setprecision(5)<<fixed<<da<<"}";
+        }
+    }
+    if(l=='<')
+    {
+        if(a>0)
+        {
+            cout<<"{x|"<<setprecision(5)<<fixed<<xiao<<"<x<"<<setprecision(5)<<fixed<<da<<"}";
+        }
+        if(a<0)
+        {
+            cout<<"{x|x<"<<setprecision(5)<<fixed<<xiao<<"或x>"<<setprecision(5)<<fixed<<da<<"}";
+        }
+    }
+    }
+    if(delta<0)
+    {
+        if(l=='>')
+        {
+            if(a>0)
+            cout<<"{x|x属于R}";
+            if(a<0)
+            cout<<"无解";
+        }
+        if(l=='<')
+        {
+            if(a<0)
+            cout<<"{x|x属于R}";
+            if(a>0)
+            cout<<"无解";
+        }
+    }
+    if(delta==0)
+    {
+        if(l=='>')
+        {
+           if(a<0)
+           cout<<"无解";
+           if(a>0)
+           cout<<"{x|x不等于"<<setprecision(5)<<fixed<<s<<"}";
+        }
+        if(l=='<')
+        {
+            if(a<0)
+            cout<<"{x|x不等于"<<setprecision(5)<<fixed<<s<<"}";
+            if(a>0)
+            cout<<"无解";
+        }
+    }
+}
